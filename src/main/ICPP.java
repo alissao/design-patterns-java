@@ -4,6 +4,11 @@ import java.math.BigDecimal;
 
 public class ICPP extends TemplateDeImpostoCondicional {
 
+	public ICPP() {}
+    public ICPP(Imposto outroImposto) {
+        super(outroImposto);
+    }
+	
 	@Override
 	public BigDecimal minimaTaxacao(Orcamento orcamento) {
 		return orcamento.getValor()

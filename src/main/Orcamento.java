@@ -6,12 +6,24 @@ import java.util.List;
 
 public class Orcamento {
 
-	private final BigDecimal valor;
+	protected BigDecimal valor;
+	protected EstadoDeUmOrcamento estadoAtual;
+	
+	private boolean jaFoiDadoDescontoExtra;
 	private final List<Item> itens;
 
 	public Orcamento (BigDecimal valor) {
 		this.valor = valor;
 		itens = new ArrayList<Item>();
+	}
+	
+	public Orcamento() {
+		this.estadoAtual = new EmAprovacao();
+		itens = new ArrayList<Item>();
+	}
+	
+	public void aplicaDescontoExtra() {
+		estadoAtual.aplicaDescontoExtra(this);
 	}
 	
 	public BigDecimal getValor() {
@@ -32,5 +44,25 @@ public class Orcamento {
         }
         return false;
     }
+	
+	public void aprova() {
+	    estadoAtual.aprova(this);
+	}
+	
+	public void reprova() {
+	    estadoAtual.reprova(this);
+	}
+	
+	public void finaliza() {
+	    estadoAtual.finaliza(this);
+	}
+
+	public boolean isJaFoiDadoDescontoExtra() {
+		return jaFoiDadoDescontoExtra;
+	}
+
+	public void setJaFoiDadoDescontoExtra(boolean jaFoiDadoDescontoExtra) {
+		this.jaFoiDadoDescontoExtra = jaFoiDadoDescontoExtra;
+	}
 	
 }

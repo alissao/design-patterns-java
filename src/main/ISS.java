@@ -1,7 +1,7 @@
 package main;
 import java.math.BigDecimal;
 
-public class ISS implements Imposto {
+public class ISS extends Imposto {
 
 	@Override
 	public BigDecimal calcula(Orcamento orcamento) {

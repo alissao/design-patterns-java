@@ -2,8 +2,15 @@ package main;
 
 import java.math.BigDecimal;
 
-public abstract class TemplateDeImpostoCondicional implements Imposto {
+public abstract class TemplateDeImpostoCondicional extends Imposto {
     
+	public TemplateDeImpostoCondicional(Imposto outroImposto) {
+        super(outroImposto);
+    }
+
+    public TemplateDeImpostoCondicional() {
+    }
+	
 	public BigDecimal calcula(Orcamento orcamento) {
 
       if(deveUsarMaximaTaxacao(orcamento)) {
